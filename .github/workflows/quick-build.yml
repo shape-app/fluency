@@ -33,7 +33,7 @@ jobs:
           xcodebuild clean test \
             -project fluency.xcodeproj \
             -scheme fluency \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.3.1' \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
             -derivedDataPath ~/Library/Developer/Xcode/DerivedData \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
