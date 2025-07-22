@@ -47,6 +47,10 @@ jobs:
 
       - name: Run UI tests
         run: |
+          # Boot simulator and wait for it to be ready
+          xcrun simctl boot "iPhone 16" || true
+          sleep 10
+
           xcodebuild test \
             -project fluency.xcodeproj \
             -scheme fluencyUITests \
@@ -54,7 +58,8 @@ jobs:
             -derivedDataPath build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            -resultBundlePath build/UI-Test-Results.xcresult
 
   code-quality:
     runs-on: macos-latest
