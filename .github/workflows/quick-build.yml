@@ -42,7 +42,10 @@ jobs:
       - name: Run pre-commit on changed files
         run: |
           # Run pre-commit on all files to ensure consistency
-          pre-commit run --all-files
+          pre-commit run --all-files --verbose --show-diff-on-failure
+        continue-on-error: false
+        env:
+          PRE_COMMIT_COLOR: always
 
       - name: Build and Test
         run: |

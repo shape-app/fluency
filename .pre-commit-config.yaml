@@ -4,10 +4,11 @@ repos:
     rev: 0.54.0
     hooks:
       - id: swiftlint
-        args: [--fix]
+        args: [--fix, --reporter=json]
         files: \.(swift)$
         types: [file]
         additional_dependencies: []
+        verbose: true
 
   # General pre-commit hooks for all file types
   - repo: https://github.com/pre-commit/pre-commit-hooks
