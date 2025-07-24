@@ -1,4 +1,4 @@
-# Fluency iOS App
+# Fluency
 
 WIP
 
