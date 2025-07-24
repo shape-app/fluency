@@ -2,9 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
+    branches: main
 
 jobs:
   build-and-test:
@@ -71,13 +69,22 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode_16.2.app
 
-      - name: Install SwiftLint
-        run: |
-          brew install swiftlint
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
 
-      - name: Run SwiftLint
+      - name: Install pre-commit
         run: |
-          swiftlint lint --reporter github-actions-logging
+          pip install pre-commit
+
+      - name: Install pre-commit hooks
+        run: |
+          pre-commit install-hooks
+
+      - name: Run pre-commit on all files
+        run: |
+          pre-commit run --all-files
 
   security-scan:
     runs-on: macos-latest

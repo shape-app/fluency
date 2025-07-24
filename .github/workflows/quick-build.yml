@@ -1,10 +1,8 @@
 name: Quick Build & Test
 
 on:
-  push:
-    branches: [main, develop, feature/*]
   pull_request:
-    branches: [main, develop]
+    branches: main
 
 jobs:
   build-and-test:
@@ -27,6 +25,27 @@ jobs:
           key: derived-data-${{ hashFiles('fluency.xcodeproj/project.pbxproj') }}
           restore-keys: |
             derived-data-
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install pre-commit
+        run: |
+          pip install pre-commit
+
+      - name: Install pre-commit hooks
+        run: |
+          pre-commit install-hooks
+
+      - name: Run pre-commit on changed files
+        run: |
+          # Run pre-commit on all files to ensure consistency
+          pre-commit run --all-files --verbose --show-diff-on-failure
+        continue-on-error: false
+        env:
+          PRE_COMMIT_COLOR: always
 
       - name: Build and Test
         run: |

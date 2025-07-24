@@ -3,10 +3,6 @@
 # Disable rules that are too strict for this project
 disabled_rules:
   - trailing_whitespace
-  - line_length
-  - function_body_length
-  - type_body_length
-  - file_length
   - identifier_name
   - type_name
 
@@ -17,8 +13,11 @@ opt_in_rules:
   - implicitly_unwrapped_optional
   - overridden_super_call
   - redundant_nil_coalescing
-  - unused_import
   - vertical_whitespace
+
+# Analyzer rules (for unused_import)
+analyzer_rules:
+  - unused_import
 
 # Configure specific rules
 line_length:
@@ -45,12 +44,3 @@ excluded:
   - DerivedData
   - fluencyTests
   - fluencyUITests
-
-# Custom rules can be added here
-custom_rules:
-  # Example custom rule (uncomment if needed)
-  # no_print:
-  #   name: "No Print"
-  #   regex: 'print\('
-  #   message: "Use proper logging instead of print statements"
-  #   severity: warning
