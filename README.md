@@ -24,3 +24,13 @@ pre-commit install
 ```bash
 pre-commit run --all-files
 ```
+
+### Xcode Templates
+
+To install project-specific templates with correct copyright headers:
+
+```bash
+python3 scripts/install_xcode_templates.py
+```
+
+After installation, new Swift files created in Xcode will automatically include the proper copyright notice.

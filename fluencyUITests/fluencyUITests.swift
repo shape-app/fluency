@@ -1,9 +1,5 @@
-//
-//  fluencyUITests.swift
-//  fluencyUITests
-//
-//  Created by Haley Jiang on 7/16/25.
-//
+// Copyright (c) 2025-present Shape
+// Licensed under the MIT License
 
 import XCTest
 

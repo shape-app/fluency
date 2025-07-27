@@ -1,3 +1,6 @@
+// Copyright (c) 2025-present Shape
+// Licensed under the MIT License
+
 import SnapKit
 import SwiftUI
 import UIKit
